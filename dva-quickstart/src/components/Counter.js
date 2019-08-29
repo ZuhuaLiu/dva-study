@@ -25,12 +25,20 @@
 //   export default connect(mapStateToProps)(Counter);
 
 import React from 'react';
+import { withRouter, Link, routerRedux } from 'dva/router'
+import PropTypes from 'prop-types';
 
-const Counter = ({ counter }) => {
+const Counter = ({ counter, dispatch, counterAdd, counterAsyncAdd, history }) => {
+    console.log(dispatch);
+    console.log('history',history);
   return (
     <div>
       <h1>{ counter.count }</h1>
-      <button>+</button>
+      <button onClick={ () => dispatch(routerRedux.push('/')) }>routerRedux </button>
+      <Link to='/'>homelink</Link>
+      <button onClick={() => {history.push('/')}}>home </button>
+      <button onClick={() => { counterAdd() }}>+</button>
+      <button onClick={() => { counterAsyncAdd() }}>async</button>
     </div>
   )
 }
@@ -38,4 +46,4 @@ const Counter = ({ counter }) => {
 Counter.propTypes = {
 }
 
-export default Counter;
+export default withRouter(Counter);
