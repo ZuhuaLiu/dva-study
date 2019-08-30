@@ -44,6 +44,7 @@ const Counter = ({ counter, dispatch, counterAdd, counterAsyncAdd, history }) =>
 }
 
 Counter.propTypes = {
+  
 }
 
 export default withRouter(Counter);
